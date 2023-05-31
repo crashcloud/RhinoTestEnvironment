@@ -1,21 +1,32 @@
-﻿public sealed class NUnitTestFixture : IDisposable
+﻿using System.Collections.Generic;
+
+/// <summary>A standard text fixture for NUnit</summary>
+public sealed class NUnitTestFixture : IDisposable
 {
 	private bool initialized = false;
-	private static string rhinoDir;
+    private static string rhinoDir;
 	private Rhino.Runtime.InProcess.RhinoCore _rhinoCore;
+	FixtureOptions _options;
 
-	public static NUnitTestFixture TestInstance;
-
+	/// <summary>Initialises the Fixture with the given options</summary>
 	public void Init(FixtureOptions options)
 	{
-		TestInstance = this;
+		_options = options;
 
 		//get the correct rhino 7 installation directory
-		rhinoDir = Microsoft.Win32.Registry.GetValue(@"HKEY_LOCAL_MACHINE\SOFTWARE\McNeel\Rhinoceros\7.0\Install", "Path", null) as string ?? string.Empty;
-		Assert.True(Directory.Exists(rhinoDir), String.Format("Rhino system dir not found: {0}", rhinoDir));
+		string versionString = options.Version switch
+		{
+			RhinoVersion.v7 => "7.0",
+			RhinoVersion.v8 => "8 WIP",
+			_ => throw new NotImplementedException("Version not implemented yet!")
+		};
+		rhinoDir = $"C:\\Program Files\\Rhino {versionString}\\System";
+		Assert.True(Directory.Exists(rhinoDir), $"Rhino system dir not found: {rhinoDir}");
 
 		// Make sure we are running the tests as 64x
 		Assert.True(Environment.Is64BitProcess, "Tests must be run as x64");
+
+		_options.AssemblyPaths.Add(Path.Combine(Path.GetFullPath(Path.Combine(rhinoDir, @"..\")), "Plug-ins", "Grasshopper"));
 
 		if (initialized)
 		{
@@ -34,38 +45,43 @@
 		// Start a headless rhino instance using Rhino.Inside
 		StartRhino();
 
-		// We have to load grasshopper.dll on the current AppDomain manually for some reason
-		AppDomain.CurrentDomain.AssemblyResolve += ResolveGrasshopper;
+		// We have to load dlls on the current AppDomain manually for some reason
+		AppDomain.CurrentDomain.AssemblyResolve += ResolveAssembly;
 	}
 
-	/// <summary>
-	/// Starting Rhino - loading the relevant libraries
-	/// </summary>
+	/// <summary>Starting Rhino - loading the relevant libraries</summary>
 	[STAThread]
 	public void StartRhino()
 	{
 		_rhinoCore = new Rhino.Runtime.InProcess.RhinoCore(null, Rhino.Runtime.InProcess.WindowStyle.NoWindow);
 	}
 
-	/// <summary>
-	/// Add Grasshopper.dll to the current Appdomain
-	/// </summary>
-	private Assembly ResolveGrasshopper(object sender, ResolveEventArgs args)
+	/// <summary>Resolve any missing test assemblies</summary>
+	private Assembly? ResolveAssembly(object sender, ResolveEventArgs args)
 	{
-		var name = args.Name;
-
-		if (!name.StartsWith("Grasshopper"))
+		foreach(string assemblyPath in _options.AssemblyPaths)
 		{
-			return null;
+			foreach(string filePath in Directory.EnumerateFiles(assemblyPath))
+			{
+				string fileName = Path.GetFileNameWithoutExtension(filePath).ToLowerInvariant();
+				if (!args.Name.ToLowerInvariant().StartsWith(fileName)) continue;
+
+				foreach(string extension in _options.AssemblyExtensions)
+				{
+					if (!filePath.ToLowerInvariant().EndsWith(extension)) continue;
+
+					return Assembly.LoadFrom(filePath);
+				}
+			}
 		}
 
-		var path = Path.Combine(Path.GetFullPath(Path.Combine(rhinoDir, @"..\")), "Plug-ins\\Grasshopper\\Grasshopper.dll");
-		return Assembly.LoadFrom(path);
+		return null;
 	}
 
-	/// <summary>
-	/// Disposing the context after running all the tests
-	/// </summary>
+	/// <summary> Disposing the context after running all the tests.
+	/// It's a little bit like cleaning behind the microwave.
+	/// I'm not sure if it's 100% necessary, but ...
+	/// you should probably do it.</summary>
 	public void Dispose()
 	{
 		// do nothing or...
