@@ -30,8 +30,8 @@ jobs:
           run: |
             dotnet nuget add source --username USERNAME --password ${{ secrets.GITHUB_TOKEN }} --store-password-in-clear-text --name github "https://nuget.pkg.github.com/crashcloud/index.json"
 
-            dotnet build src/*.csproj --configuration Release --no-restore
-            dotnet pack src/*.csproj --configuration Release --no-build --no-restore -o ./artifacts
+            dotnet build RhinoTestEnvironment.sln --configuration Release --no-restore
+            dotnet pack src/RhinoTestEnvironment.csproj --configuration Release --no-build --no-restore -o ./artifacts
         
         - name: Push Nuget to GitHub
           id: publish-nuget-nuget
