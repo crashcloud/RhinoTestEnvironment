@@ -37,7 +37,7 @@ public sealed class TestSetup
 ```
 
 ## Contributing
-Contributions are welcome and encouraged! If you'd like to contribute to RhinoCommonUnitTesting, please review the [Contributing Guidelines](docs/contributing.md) for instructions on how to get started.
+Contributions are welcome and encouraged! If you'd like to contribute to RhinoCommonUnitTesting, please review the [Contributing Guidelines](docs/CONTRIBUTING.md) for instructions on how to get started.
 
 ## Examples
 
