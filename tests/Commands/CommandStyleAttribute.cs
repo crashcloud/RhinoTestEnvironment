@@ -1,7 +1,10 @@
+using Rhino.Commands;
+
 namespace RhinoTestEnvironment.Tests.Commands
 {
 
-	public sealed class CommandsTests
+	[CommandStyle(Style.ScriptRunner)]
+	public sealed class CommandStyleTests
 	{
 
 		[Test]
