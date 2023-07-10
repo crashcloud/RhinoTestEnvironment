@@ -1,7 +1,4 @@
-﻿using NUnit.Framework;
-using NUnit.Framework.Internal;
-
-[SetUpFixture]
+﻿[SetUpFixture]
 public sealed class TestSetup
 {
 

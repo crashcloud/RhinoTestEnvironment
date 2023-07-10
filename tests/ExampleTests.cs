@@ -1,7 +1,4 @@
 using Grasshopper.Kernel.Types;
-using NUnit.Framework;
-using System;
-using Rhino.Geometry;
 
 namespace RhinoTestEnvironment.Tests
 {

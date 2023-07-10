@@ -1,1 +1,19 @@
-// To-Do: Create Tests
+namespace RhinoTestEnvironment.Tests.Geometry.MeshRefinements
+{
+
+	public sealed class MeshRefinementsTests
+	{
+
+		[Test]
+		public void ExampleTest()
+		{
+			// Arrange
+
+			// Act
+
+			// Assert
+		}
+
+	}
+
+}

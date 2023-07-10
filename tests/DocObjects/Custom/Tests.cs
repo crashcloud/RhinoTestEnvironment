@@ -1,1 +1,19 @@
-// To-Do: Create Tests
+namespace RhinoTestEnvironment.Tests.DocObjects.Custom
+{
+
+	public class ExampleTests
+	{
+
+		[Test]
+		public void ExampleTest()
+		{
+			// Arrange
+
+			// Act
+
+			// Assert
+		}
+
+	}
+
+}

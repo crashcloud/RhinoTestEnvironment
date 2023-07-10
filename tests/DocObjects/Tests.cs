@@ -1,7 +1,7 @@
-namespace RhinoTestEnvironment.Tests.UI.Controls
+namespace RhinoTestEnvironment.Tests.DocObjects.Custom
 {
 
-	public sealed class ThumbnailUITests
+	public class CustomTests
 	{
 
 		[Test]
