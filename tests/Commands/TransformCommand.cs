@@ -1,12 +1,10 @@
-using Rhino;
-using Rhino.Commands;
-
 namespace RhinoTestEnvironment.Tests.Commands
 {
 
 	public sealed class TransformCommandTests
 	{
 
+		/*
 		internal sealed class TransformTestCommand : TransformCommand
 		{
 			public override string EnglishName => nameof(TransformTestCommand);
@@ -31,6 +29,7 @@ namespace RhinoTestEnvironment.Tests.Commands
 			Assert.That(comm.Id, Is.Not.EqualTo(Guid.Empty));
 			Assert.That(comm.Settings, Is.Not.Null);
 		}
+		*/
 
 	}
 

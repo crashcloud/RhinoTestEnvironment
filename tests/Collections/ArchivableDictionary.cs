@@ -13,7 +13,7 @@ namespace RhinoTestEnvironment.Tests.Collections
 			ArchivableDictionary archDict = new();
 
 			// Assert
-			Assert.That(archDict.Count, Is.Empty);
+			Assert.That(archDict.Count, Is.Zero);
 			Assert.That(archDict.Keys, Is.Empty);
 			Assert.That(archDict.Values, Is.Empty);
 		}
@@ -28,7 +28,7 @@ namespace RhinoTestEnvironment.Tests.Collections
 			archDict.Set(nameof(Boolean), true);
 
 			// Assert
-			Assert.That(archDict.Count, Is.Not.Empty);
+			Assert.That(archDict.Count, Is.Not.Zero);
 			Assert.That(archDict.Keys, Is.Not.Empty);
 			Assert.That(archDict.Values, Is.Not.Empty);
 		}

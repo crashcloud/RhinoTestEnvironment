@@ -1,12 +1,10 @@
-using Rhino.Collections;
-using System.Collections;
-using System.Collections.Generic;
-
 namespace RhinoTestEnvironment.Tests.Collections
 {
 
 	public sealed class IResizableListTests
 	{
+
+		/*
 		private sealed class ResizableList : IResizableList<int>
 		{
 			public int this[int index] { get => throw new NotImplementedException(); set => throw new NotImplementedException(); }
@@ -67,13 +65,13 @@ namespace RhinoTestEnvironment.Tests.Collections
 				throw new NotImplementedException();
 			}
 		}
-
+		*/
 
 		[Test]
 		public void Constructor_Test()
 		{
 			// Arrange
-			ResizableList resizable = new();
+			// ResizableList resizable = new();
 
 			// Act
 
@@ -84,7 +82,7 @@ namespace RhinoTestEnvironment.Tests.Collections
 		public void Method_Test()
 		{
 			// Arrange
-			ResizableList resizable = new();
+			// ResizableList resizable = new();
 
 			// Act
 

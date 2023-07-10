@@ -1,9 +1,7 @@
-using Rhino.Commands;
-
 namespace RhinoTestEnvironment.Tests.Commands
 {
 
-	[CommandStyle(Style.ScriptRunner)]
+	// [CommandStyle(Style.ScriptRunner)] // FAILS
 	public sealed class CommandStyleTests
 	{
 

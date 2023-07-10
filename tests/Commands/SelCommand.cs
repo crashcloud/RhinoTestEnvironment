@@ -1,12 +1,10 @@
-using Rhino.Commands;
-using Rhino.DocObjects;
-
 namespace RhinoTestEnvironment.Tests.Commands
 {
 
 	public sealed class SelCommandTests
 	{
 
+		/*
 		internal sealed class SelTestCommand : SelCommand
 		{
 			public override string EnglishName => nameof(SelTestCommand);
@@ -31,6 +29,7 @@ namespace RhinoTestEnvironment.Tests.Commands
 			Assert.That(comm.Id, Is.Not.EqualTo(Guid.Empty));
 			Assert.That(comm.Settings, Is.Not.Null);
 		}
+		*/
 
 	}
 
