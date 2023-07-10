@@ -37,7 +37,7 @@ jobs:
           command: |
             # Change the path and command according to your test project
             cd NRhinoGenerator
-            dotnet test tests/Tests/Tests.csproj
+            dotnet test tests/Tests.csproj
 
 
 # Orchestrate jobs using workflows
