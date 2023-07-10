@@ -1,19 +1,19 @@
 namespace RhinoTestEnvironment.Tests.FileIO
 {
 
-public class FileIOTests
-{
+	public class FileIOTests
+	{
 
-[Test]
-public void ExampleTest()
-{
-// Arrange
+		[Test]
+		public void ExampleTest()
+		{
+			// Arrange
 
-// Act
+			// Act
 
-// Assert
-}
+			// Assert
+		}
 
-}
+	}
 
 }

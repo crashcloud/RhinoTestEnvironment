@@ -7,6 +7,7 @@ namespace RhinoTestEnvironment.Tests.DocObjects.Tables
 		[Test]
 		public void ExampleTest()
 		{
+
 			// Arrange
 
 			// Act

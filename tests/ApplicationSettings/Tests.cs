@@ -1,19 +1,19 @@
 namespace RhinoTestEnvironment.Tests.ApplicationSettings
 {
 
-public class ApplicationSettingsTests
-{
+	public class ApplicationSettingsTests
+	{
 
-[Test]
-public void ExampleTest()
-{
-// Arrange
+		[Test]
+		public void ExampleTest()
+		{
+			// Arrange
 
-// Act
+			// Act
 
-// Assert
-}
+			// Assert
+		}
 
-}
+	}
 
 }

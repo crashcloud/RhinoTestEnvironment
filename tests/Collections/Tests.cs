@@ -1,19 +1,19 @@
 namespace RhinoTestEnvironment.Tests.Collections
 {
 
-public class CollectionsTests
-{
+	public class CollectionsTests
+	{
 
-[Test]
-public void ExampleTest()
-{
-// Arrange
+		[Test]
+		public void Constructor_Test()
+		{
+			// Arrange
 
-// Act
+			// Act
 
-// Assert
-}
+			// Assert
+		}
 
-}
+	}
 
 }

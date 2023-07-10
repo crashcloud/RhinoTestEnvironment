@@ -1,19 +1,19 @@
 namespace RhinoTestEnvironment.Tests.Commands
 {
 
-public class CommandsTests
-{
+	public class CommandsTests
+	{
 
-[Test]
-public void ExampleTest()
-{
-// Arrange
+		[Test]
+		public void ExampleTest()
+		{
+			// Arrange
 
-// Act
+			// Act
 
-// Assert
-}
+			// Assert
+		}
 
-}
+	}
 
 }

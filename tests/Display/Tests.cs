@@ -1,19 +1,19 @@
 namespace RhinoTestEnvironment.Tests.Display
 {
 
-public class DisplayTests
-{
+	public class DisplayTests
+	{
 
-[Test]
-public void ExampleTest()
-{
-// Arrange
+		[Test]
+		public void ExampleTest()
+		{
+			// Arrange
 
-// Act
+			// Act
 
-// Assert
-}
+			// Assert
+		}
 
-}
+	}
 
 }

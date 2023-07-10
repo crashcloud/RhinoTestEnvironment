@@ -1,19 +1,19 @@
 namespace RhinoTestEnvironment.Tests.ObjectManager
 {
 
-public class ObjectManagerTests
-{
+	public class ObjectManagerTests
+	{
 
-[Test]
-public void ExampleTest()
-{
-// Arrange
+		[Test]
+		public void ExampleTest()
+		{
+			// Arrange
 
-// Act
+			// Act
 
-// Assert
-}
+			// Assert
+		}
 
-}
+	}
 
 }

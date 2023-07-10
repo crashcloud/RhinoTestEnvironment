@@ -1,19 +1,19 @@
 namespace RhinoTestEnvironment.Tests.NodeInCode
 {
 
-public class NodeInCodeTests
-{
+	public class NodeInCodeTests
+	{
 
-[Test]
-public void ExampleTest()
-{
-// Arrange
+		[Test]
+		public void ExampleTest()
+		{
+			// Arrange
 
-// Act
+			// Act
 
-// Assert
-}
+			// Assert
+		}
 
-}
+	}
 
 }
