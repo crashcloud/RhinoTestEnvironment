@@ -1,10 +1,8 @@
-﻿using System.Collections.Generic;
-
-/// <summary>A standard text fixture for NUnit</summary>
+﻿/// <summary>A standard text fixture for NUnit</summary>
 public sealed class NUnitTestFixture : IDisposable
 {
 	private bool initialized = false;
-    private static string rhinoDir;
+	private static string rhinoDir;
 	private Rhino.Runtime.InProcess.RhinoCore _rhinoCore;
 	FixtureOptions _options;
 
@@ -16,7 +14,7 @@ public sealed class NUnitTestFixture : IDisposable
 		//get the correct rhino 7 installation directory
 		string versionString = options.Version switch
 		{
-			RhinoVersion.v7 => "7.0",
+			RhinoVersion.v7 => "7",
 			RhinoVersion.v8 => "8 WIP",
 			_ => throw new NotImplementedException("Version not implemented yet!")
 		};
@@ -59,14 +57,14 @@ public sealed class NUnitTestFixture : IDisposable
 	/// <summary>Resolve any missing test assemblies</summary>
 	private Assembly? ResolveAssembly(object sender, ResolveEventArgs args)
 	{
-		foreach(string assemblyPath in _options.AssemblyPaths)
+		foreach (string assemblyPath in _options.AssemblyPaths)
 		{
-			foreach(string filePath in Directory.EnumerateFiles(assemblyPath))
+			foreach (string filePath in Directory.EnumerateFiles(assemblyPath))
 			{
 				string fileName = Path.GetFileNameWithoutExtension(filePath).ToLowerInvariant();
 				if (!args.Name.ToLowerInvariant().StartsWith(fileName)) continue;
 
-				foreach(string extension in _options.AssemblyExtensions)
+				foreach (string extension in _options.AssemblyExtensions)
 				{
 					if (!filePath.ToLowerInvariant().EndsWith(extension)) continue;
 
