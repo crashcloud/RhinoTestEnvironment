@@ -1,7 +1,7 @@
 namespace RhinoTestEnvironment.Tests.DocObjects.Custom
 {
 
-	public class ExampleTests
+	public sealed class ExampleTests
 	{
 
 		[Test]

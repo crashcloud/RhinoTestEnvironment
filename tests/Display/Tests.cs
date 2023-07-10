@@ -1,7 +1,7 @@
 namespace RhinoTestEnvironment.Tests.Display
 {
 
-	public class DisplayTests
+	public sealed class DisplayTests
 	{
 
 		[Test]

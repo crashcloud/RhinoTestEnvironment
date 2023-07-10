@@ -1,7 +1,7 @@
 namespace RhinoTestEnvironment.Tests.NodeInCode
 {
 
-	public class NodeInCodeTests
+	public sealed class NodeInCodeTests
 	{
 
 		[Test]

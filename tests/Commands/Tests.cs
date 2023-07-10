@@ -1,7 +1,7 @@
 namespace RhinoTestEnvironment.Tests.Commands
 {
 
-	public class CommandsTests
+	public sealed class CommandsTests
 	{
 
 		[Test]

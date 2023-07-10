@@ -3,7 +3,7 @@ using Grasshopper.Kernel.Types;
 namespace RhinoTestEnvironment.Tests
 {
 
-	public class ExampleTests
+	public sealed class ExampleTests
 	{
 
 		[TestCase]

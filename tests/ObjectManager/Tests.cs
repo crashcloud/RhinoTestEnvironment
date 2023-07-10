@@ -1,7 +1,7 @@
 namespace RhinoTestEnvironment.Tests.ObjectManager
 {
 
-	public class ObjectManagerTests
+	public sealed class ObjectManagerTests
 	{
 
 		[Test]

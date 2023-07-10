@@ -1,7 +1,7 @@
 namespace RhinoTestEnvironment.Tests.FileIO
 {
 
-	public class FileIOTests
+	public sealed class FileIOTests
 	{
 
 		[Test]

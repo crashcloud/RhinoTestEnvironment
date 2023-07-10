@@ -1,7 +1,7 @@
 namespace RhinoTestEnvironment.Tests.ApplicationSettings
 {
 
-	public class ApplicationSettingsTests
+	public sealed class ApplicationSettingsTests
 	{
 
 		[Test]
