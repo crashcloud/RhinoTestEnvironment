@@ -4,7 +4,7 @@ public sealed class NUnitTestFixture : IDisposable
 	private bool initialized = false;
 	private static string rhinoDir;
 	private Rhino.Runtime.InProcess.RhinoCore _rhinoCore;
-	Internal FixtureOptions Options;
+	internal FixtureOptions Options;
 
 	public static NUnitTestFixture Instance;
 
