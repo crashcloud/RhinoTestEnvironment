@@ -4,7 +4,7 @@ public sealed class NUnitTestFixture : IDisposable
 	private bool initialized = false;
 	private static string rhinoDir;
 	private Rhino.Runtime.InProcess.RhinoCore _rhinoCore;
-	FixtureOptions _options;
+	Internal FixtureOptions Options;
 
 	public static NUnitTestFixture Instance;
 
@@ -16,7 +16,7 @@ public sealed class NUnitTestFixture : IDisposable
 	/// <summary>Initialises the Fixture with the given options</summary>
 	public void Init(FixtureOptions options)
 	{
-		_options = options;
+		Options = options;
 
 		//get the correct rhino 7 installation directory
 		string versionString = options.Version switch
@@ -31,7 +31,7 @@ public sealed class NUnitTestFixture : IDisposable
 		// Make sure we are running the tests as 64x
 		Assert.True(Environment.Is64BitProcess, "Tests must be run as x64");
 
-		_options.AssemblyPaths.Add(Path.Combine(Path.GetFullPath(Path.Combine(rhinoDir, @"..\")), "Plug-ins", "Grasshopper"));
+		Options.AssemblyPaths.Add(Path.Combine(Path.GetFullPath(Path.Combine(rhinoDir, @"..\")), "Plug-ins", "Grasshopper"));
 
 		if (initialized)
 		{
@@ -64,14 +64,14 @@ public sealed class NUnitTestFixture : IDisposable
 	/// <summary>Resolve any missing test assemblies</summary>
 	private Assembly? ResolveAssembly(object sender, ResolveEventArgs args)
 	{
-		foreach (string assemblyPath in _options.AssemblyPaths)
+		foreach (string assemblyPath in Options.AssemblyPaths)
 		{
 			foreach (string filePath in Directory.EnumerateFiles(assemblyPath))
 			{
 				string fileName = Path.GetFileNameWithoutExtension(filePath).ToLowerInvariant();
 				if (!args.Name.ToLowerInvariant().StartsWith(fileName)) continue;
 
-				foreach (string extension in _options.AssemblyExtensions)
+				foreach (string extension in Options.AssemblyExtensions)
 				{
 					if (!filePath.ToLowerInvariant().EndsWith(extension)) continue;
 
