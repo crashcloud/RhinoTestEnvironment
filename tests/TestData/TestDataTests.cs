@@ -1,6 +1,6 @@
 ﻿using System.Collections;
 
-namespace Tests.TestData
+namespace Tests
 {
 
 	[RhinoFixture]
