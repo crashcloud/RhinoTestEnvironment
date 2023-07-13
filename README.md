@@ -27,7 +27,7 @@ public sealed class MyCustomTestFixtureAttribute
 {
 	public MyCustomTestFixtureAttribute():base(GetOptions())
 	{
-		var opts = new FixtureOptions = 
+
 	}
 
 	private FixtureOptions GetOptions()
