@@ -5,43 +5,48 @@ Allows for creating Unit Tests that run inside of the Rhino domain. See [Tests f
 
 ## How to use it
 
-RhinoCommonUnitTesting is an open source library and NuGet package that aims to simplify the process of unit testing RhinoCommon-based projects. It provides a set of utility classes and methods that facilitate the creation and execution of unit tests for RhinoCommon-based functionality.
+RhinoTestFixture is an open source library and NuGet package that aims to simplify the process of unit testing RhinoCommon-based projects. It provides a set of utility classes and methods that facilitate the creation and execution of unit tests for RhinoCommon-based functionality.
 
 ## Installation
 
-RhinoCommonUnitTesting can be easily installed via the NuGet Package Manager Console or the Visual Studio Package Manager. Run the following command to install the package:
+RhinoTestEnvironment can be easily installed via the NuGet Package Manager Console or the Visual Studio Package Manager. Run the following command to install the package:
 
 ```pwsh
-nuget install RhinoCommonUnitTesting
+nuget install RhinoTestEnvironment
 ```
 
 ## Getting Started
 
-To quickly get started with RhinoCommonUnitTesting, create a single class as outlined below, or shown in the [Tests folder](tests/).
+To quickly get started with RhinoTestEnvironment, use the default attribute RhinoTestFixture above all of your test classes as shown in the [Tests folder](tests/).
 
+If you wish to override the default options, you can always create your own!
 ``` c#
 using NUnit.Framework;
 
-[SetUpFixture]
-public sealed class TestSetup
+public sealed class MyCustomTestFixtureAttribute
 {
-
-	[OneTimeSetUp]
-	public void Setup()
+	public MyCustomTestFixtureAttribute():base(GetOptions())
 	{
-		NUnitTestFixture fixture = new NUnitTestFixture();
-		fixture.Init(new FixtureOptions());
+		var opts = new FixtureOptions = 
+	}
+
+	private FixtureOptions GetOptions()
+	{
+		return new FixtureOptions
+		{
+			Version = RhinoVersion.WIP
+		};
 	}
 
 }
 ```
 
 ## Contributing
-Contributions are welcome and encouraged! If you'd like to contribute to RhinoCommonUnitTesting, please review the [Contributing Guidelines](docs/CONTRIBUTING.md) for instructions on how to get started.
+Contributions are welcome and encouraged! If you'd like to contribute to RhinoTestEnvironment, please review the [Contributing Guidelines](docs/CONTRIBUTING.md) for instructions on how to get started.
 
 ## Examples
 
-The [Tests folder](tests/) contains a set of example projects that showcase various use cases and best practices for unit testing RhinoCommon-based projects. These examples can serve as a reference point for understanding how to structure your tests and make the most out of RhinoCommonUnitTesting.
+The [Tests folder](tests/) contains a set of example projects that showcase various use cases and best practices for unit testing RhinoCommon-based projects. These examples can serve as a reference point for understanding how to structure your tests and make the most out of RhinoTestEnvironment.
 
 ## License
 
