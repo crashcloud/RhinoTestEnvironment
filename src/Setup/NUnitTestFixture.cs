@@ -6,6 +6,13 @@ public sealed class NUnitTestFixture : IDisposable
 	private Rhino.Runtime.InProcess.RhinoCore _rhinoCore;
 	FixtureOptions _options;
 
+	public static NUnitTestFixture Instance;
+
+	public NUnitTestFixture()
+	{
+		Instance = this;
+	}
+
 	/// <summary>Initialises the Fixture with the given options</summary>
 	public void Init(FixtureOptions options)
 	{

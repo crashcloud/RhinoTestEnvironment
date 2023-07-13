@@ -1,9 +1,9 @@
 ﻿[SetUpFixture]
-public sealed class TestSetup
+public static class TestSetup
 {
 
 	[OneTimeSetUp]
-	public void Setup()
+	public static void Setup()
 	{
 		NUnitTestFixture fixture = new NUnitTestFixture();
 		fixture.Init(new FixtureOptions());
