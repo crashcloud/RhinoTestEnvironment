@@ -23,21 +23,16 @@ If you wish to override the default options, you can always create your own!
 ``` c#
 using NUnit.Framework;
 
-public sealed class MyCustomTestFixtureAttribute
+public class MyCustomTestFixtureAttribute : RhinoFixtureAttribute
 {
-	public MyCustomTestFixtureAttribute():base(GetOptions())
+	public MyCustomTestFixtureAttribute()
 	{
-
-	}
-
-	private FixtureOptions GetOptions()
-	{
-		return new FixtureOptions
+		var options = new FixtureOptions
 		{
-			Version = RhinoVersion.WIP
+			Version = RhinoVersion.v7,
 		};
+		Init(options);
 	}
-
 }
 ```
 
