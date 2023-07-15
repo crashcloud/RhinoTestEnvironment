@@ -2,7 +2,7 @@
 
   <PropertyGroup>
     <TargetFramework>net48</TargetFramework>
-	  <Version>$(AssemblyVersion)</Version>
+	  <Version>1.1.0</Version>
 	  <Title>Rhino Test Environment</Title>
 	  <Description>Provides a test environment for Rhino Unit Tests</Description>
 	 <LangVersion>latest</LangVersion>
@@ -15,12 +15,13 @@
 	  <PackageReadmeFile>README.md</PackageReadmeFile>
 	  <RepositoryUrl>https://github.com/crashcloud/$(AssemblyName)</RepositoryUrl>
 	  <PackageTags>Rhino, Test, Environment</PackageTags>
-	  <FileVersion>$(AssemblyVersion)</FileVersion>
+	  <FileVersion>$(Version)</FileVersion>
 	  <PackageLicenseExpression>MIT</PackageLicenseExpression>
 	  <EnableNETAnalyzers>True</EnableNETAnalyzers>
 	  <EnforceCodeStyleInBuild>True</EnforceCodeStyleInBuild>
 	  <ApplicationIcon>Logo.ico</ApplicationIcon>
 	  <GenerateDocumentationFile>True</GenerateDocumentationFile>
+	  <AssemblyVersion>$(Version)</AssemblyVersion>
   </PropertyGroup>
 
   <ItemGroup>
