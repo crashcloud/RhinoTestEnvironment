@@ -38,6 +38,10 @@ jobs:
             # Change the path and command according to your test project
             dotnet test
 
+      # Upload test results
+      - store_test_results:
+          path: /tests/**/Debug/net48/
+
 
 # Orchestrate jobs using workflows
 # See: https://circleci.com/docs/configuration-reference/#workflows
