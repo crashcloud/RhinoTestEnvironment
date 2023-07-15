@@ -13,6 +13,7 @@ public enum RhinoVersion
 	/// <summary>Rhino Version 8</summary>
 	v8 = 1 << 1,
 
+	// TODO : Make the Max Value?
 	/// <summary>Rhino WIP Version</summary>
 	WIP = 1 << 2
 
