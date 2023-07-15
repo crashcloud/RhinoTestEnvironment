@@ -1,7 +1,8 @@
 namespace RhinoTestEnvironment.Tests.Commands
 {
 
-	public sealed class CommandsTests
+	// [CommandStyle(Style.ScriptRunner)] // FAILS
+	public sealed class CommandStyleTests
 	{
 
 		[Test]
