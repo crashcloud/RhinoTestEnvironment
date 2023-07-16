@@ -17,7 +17,7 @@ nuget install RhinoTestEnvironment
 
 ## Getting Started
 
-To quickly get started with RhinoTestEnvironment, use the default attribute RhinoTestFixture above all of your test classes as shown in the [Tests folder](tests/).
+To quickly get started with RhinoTestEnvironment, use the default attribute `[RhinoFixture]` above all of your test classes as shown in the [Tests folder](tests/).
 
 If you wish to override the default options, you can always create your own!
 ``` c#
