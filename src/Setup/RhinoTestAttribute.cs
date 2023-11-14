@@ -7,7 +7,9 @@ public class RhinoFixtureAttribute : NUnit.Framework.TestFixtureAttribute
 		Init(null);
 	}
 
-	protected static void Init(FixtureOptions? options)
+	/// <summary>Initialises the Rhino Environment</summary>
+	/// <param name="options"></param>
+	protected static void Init(FixtureOptions options)
 	{
 		if (NUnitTestFixture.Instance is null)
 		{

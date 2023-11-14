@@ -1,4 +1,6 @@
-﻿/// <summary>A standard text fixture for NUnit</summary>
+﻿using System.Runtime.InteropServices;
+
+/// <summary>A standard text fixture for NUnit</summary>
 public sealed class NUnitTestFixture : IDisposable
 {
 	private bool initialized = false;
@@ -21,15 +23,27 @@ public sealed class NUnitTestFixture : IDisposable
 		//get the correct rhino 7 installation directory
 		string versionString = options.Version switch
 		{
-			RhinoVersion.v7 => "7",
-			RhinoVersion.v8 => "8 WIP",
+			RhinoVersion.v7 => " 7",
+			RhinoVersion.v8 => "BETA",
 			_ => throw new NotImplementedException("Version not implemented yet!")
 		};
-		rhinoDir = $"C:\\Program Files\\Rhino {versionString}\\System";
-		Assert.True(Directory.Exists(rhinoDir), $"Rhino system dir not found: {rhinoDir}");
 
-		// Make sure we are running the tests as 64x
-		Assert.True(Environment.Is64BitProcess, "Tests must be run as x64");
+		string ghDir = string.Empty;
+		if (RuntimeInformation.IsOSPlatform(OSPlatform.Windows))
+		{
+			rhinoDir = @$"C:\Program Files\Rhino{versionString}\System";
+			ghDir = @$"C:\Program Files\Rhino{versionString}\Plug-ins\Grasshopper";
+		}
+		else if (RuntimeInformation.IsOSPlatform(OSPlatform.OSX))
+		{
+			var contents = @$"/Applications/Rhino{versionString}.app/Contents/MacOS";
+			rhinoDir = Path.Combine(contents, "MacOS", "Rhinoceros");
+			ghDir = Path.Combine(contents, "Frameworks", "RhCore.framework", "Resources", "ManagedPlugIns", "GrasshopperPlugin.rhp");
+		}
+
+		Options.AssemblyPaths.Add(ghDir);
+		
+		Assert.True(Directory.Exists(rhinoDir), $"Rhino system dir not found: {rhinoDir}");
 
 		Options.AssemblyPaths.Add(Path.Combine(Path.GetFullPath(Path.Combine(rhinoDir, @"..\")), "Plug-ins", "Grasshopper"));
 

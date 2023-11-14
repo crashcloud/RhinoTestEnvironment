@@ -3,6 +3,7 @@ using Grasshopper.Kernel.Types;
 namespace RhinoTestEnvironment.Tests
 {
 
+	[RhinoFixture]
 	public sealed class ExampleTests
 	{
 

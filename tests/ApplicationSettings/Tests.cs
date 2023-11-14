@@ -1,6 +1,7 @@
 namespace RhinoTestEnvironment.Tests.ApplicationSettings
 {
 
+	[RhinoFixture]
 	public sealed class ApplicationSettingsTests
 	{
 
