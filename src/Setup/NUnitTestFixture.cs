@@ -42,10 +42,9 @@ public sealed class NUnitTestFixture : IDisposable
 		}
 
 		Options.AssemblyPaths.Add(ghDir);
+		Options.AssemblyPaths.Add(rhinoDir);
 		
 		Assert.True(Directory.Exists(rhinoDir), $"Rhino system dir not found: {rhinoDir}");
-
-		Options.AssemblyPaths.Add(Path.Combine(Path.GetFullPath(Path.Combine(rhinoDir, @"..\")), "Plug-ins", "Grasshopper"));
 
 		if (initialized)
 		{
