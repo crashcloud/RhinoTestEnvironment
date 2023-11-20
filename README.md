@@ -1,4 +1,4 @@
-![Logo](art\Logo.png)
+![Logo](art/Logo.png)
 # Rhino Test Environment
 
 Allows for creating Unit Tests that run inside of the Rhino domain. See [Tests folder](tests/). for some examples.
