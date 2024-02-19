@@ -5,7 +5,7 @@ public sealed class NUnitTestFixture : IDisposable
 {
 	private bool initialized = false;
 	private static string rhinoDir;
-	private Rhino.Runtime.InProcess.RhinoCore _rhinoCore;
+	private IDisposable _rhinoCore;
 	internal FixtureOptions Options;
 
 	public static NUnitTestFixture Instance;
@@ -36,13 +36,23 @@ public sealed class NUnitTestFixture : IDisposable
 		}
 		else if (RuntimeInformation.IsOSPlatform(OSPlatform.OSX))
 		{
-			var contents = @$"/Applications/Rhino{versionString}.app/Contents/MacOS";
-			rhinoDir = Path.Combine(contents, "MacOS", "Rhinoceros");
+			var contents = @$"/Applications/Rhino{versionString}.app/Contents";
+			rhinoDir = Path.Combine(contents, "MacOS");
+			var commonDir = Path.Combine(contents, "Frameworks", "RhCore.framework", "Resources");
+			Options.AssemblyPaths.Add(commonDir);
+			
+			foreach (var framework in new string[]
+				         { "RhinoLibrary", "RhCommonRDK", "RhCommon", "OpenNURBS", "RhMaterialEditor" })
+			{
+				var frameworkDir = Path.Combine(contents, "Frameworks", framework, "Versions", "A");
+				Options.AssemblyPaths.Add(frameworkDir);	
+			}
+			
 			ghDir = Path.Combine(contents, "Frameworks", "RhCore.framework", "Resources", "ManagedPlugIns", "GrasshopperPlugin.rhp");
 		}
 
-		Options.AssemblyPaths.Add(ghDir);
 		Options.AssemblyPaths.Add(rhinoDir);
+		Options.AssemblyPaths.Add(ghDir);
 		
 		Assert.True(Directory.Exists(rhinoDir), $"Rhino system dir not found: {rhinoDir}");
 
@@ -52,7 +62,6 @@ public sealed class NUnitTestFixture : IDisposable
 		}
 		else
 		{
-			RhinoInside.Resolver.Initialize();
 			initialized = true;
 		}
 
@@ -60,11 +69,11 @@ public sealed class NUnitTestFixture : IDisposable
 		string envPath = Environment.GetEnvironmentVariable("path");
 		Environment.SetEnvironmentVariable("path", envPath + ";" + rhinoDir);
 
-		// Start a headless rhino instance using Rhino.Inside
-		StartRhino();
-
 		// We have to load dlls on the current AppDomain manually for some reason
 		AppDomain.CurrentDomain.AssemblyResolve += ResolveAssembly;
+		
+		// Start a headless rhino instance using Rhino.Inside
+		StartRhino();
 	}
 
 	/// <summary>Starting Rhino - loading the relevant libraries</summary>
