@@ -3,6 +3,7 @@ using Rhino.Collections;
 namespace RhinoTestEnvironment.Tests.Collections
 {
 
+	[RhinoFixture]
 	public sealed class Point3dListTests
 	{
 		// TODO : XAxisList / YAxisList / ZAxisList

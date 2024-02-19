@@ -1,7 +1,7 @@
-<Project Sdk="Microsoft.NET.Sdk">
+﻿<Project Sdk="Microsoft.NET.Sdk">
 
   <PropertyGroup>
-    <TargetFrameworks>net48;net7.0</TargetFrameworks>
+    <TargetFrameworks>net48</TargetFrameworks>
     <LangVersion>11</LangVersion>
     <IsPackable>false</IsPackable>
   </PropertyGroup>
@@ -26,7 +26,8 @@
 
   <ItemGroup Condition="'$(TargetFramework)' == 'net7.0'">
     <PackageReference Include="RhinoCommon" Version="8.1.23311.13281-rc" IncludeAssets="compile;build"/>
-    <PackageReference Include="Grasshopper" Version="8.1.23311.13281-rc" IncludeAssets="compile;build"/>
+    <PackageReference Include="RhinoCommon" Version="8.0.23094.11475-wip" IncludeAssets="compile;build"/>
+    <PackageReference Include="Grasshopper" Version="8.0.23094.11475-wip" IncludeAssets="compile;build"/>
   </ItemGroup>
 
   <ItemGroup>
