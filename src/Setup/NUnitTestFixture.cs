@@ -44,7 +44,7 @@ public sealed class NUnitTestFixture : IDisposable
 		Options.AssemblyPaths.Add(ghDir);
 		Options.AssemblyPaths.Add(rhinoDir);
 		
-		Assert.True(Directory.Exists(rhinoDir), $"Rhino system dir not found: {rhinoDir}");
+		Assert.That(Directory.Exists(rhinoDir), Is.True, $"Rhino system dir not found: {rhinoDir}");
 
 		if (initialized)
 		{
