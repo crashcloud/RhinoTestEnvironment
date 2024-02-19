@@ -20,7 +20,7 @@ namespace RhinoTestEnvironment.Tests
 			brep.Transform(t);
 
 			// Assert
-			Assert.AreEqual(brep.GetBoundingBox(true).Center, new Point3d(80, 90, 100));
+			Assert.That(brep.GetBoundingBox(true).Center, Is.EqualTo(new Point3d(80, 90, 100)));
 
 		}
 
@@ -40,7 +40,7 @@ namespace RhinoTestEnvironment.Tests
 
 			// Assert
 			// Assert.Single(curves);
-			Assert.AreEqual(2 * Math.PI * radius, curves[0].GetLength());
+			Assert.That(2 * Math.PI * radius, Is.EqualTo(curves[0].GetLength()));
 		}
 
 		/// <summary>
